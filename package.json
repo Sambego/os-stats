@@ -1,0 +1,20 @@
+{
+    "name": "os-stats",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Sambego",
+    "license": "MIT",
+    "dependencies": {
+        "@octokit/rest": "^18.0.12",
+        "chalk": "^4.1.0",
+        "cli-table": "^0.3.4",
+        "dotenv": "^8.2.0",
+        "ora": "^5.1.0"
+    }
+}
