@@ -6,4 +6,8 @@ Copy the `.en.sample` file to `.env` and add a GitHub personal token that has ac
 Update the `repos` array in `index.js` to include the repositories you'd like to query.
 Update the `since` variable in `index.js` for the timeframe you'd like to query
 
-Tested on node v15
+## Run
+
+Run `node index.js` in you terminal.
+
+Tested on Node v15
