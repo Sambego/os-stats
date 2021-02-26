@@ -5,7 +5,6 @@ import chalk from "chalk";
 import ora from "ora";
 
 dotenv.config();
-
 const since = `${new Date().getFullYear()}-01-01T00:00:00`;
 const repos = [
     "auth0/angular-jwt",
@@ -17,6 +16,8 @@ const repos = [
     "auth0/openidconnect-playground",
     "jsonwebtoken/jsonwebtoken.github.io",
     "samltool/samltool.github.io",
+    "sambego/avocado-labs",
+    "auth0/event-tracker",
 ];
 
 const octokit = new Octokit({ auth: process.env.GITHUB });
@@ -37,7 +38,7 @@ const getOwnerAndRepo = (repo) => ({
 });
 
 const getStatsForRepo = async(repository) => {
-    const commits = await octokit.repos.getCommitActivityStats({
+    const commits = await octokit.repos.listCommits({
         ...getOwnerAndRepo(repository),
         since,
     });
@@ -58,9 +59,7 @@ const getStatsForRepo = async(repository) => {
 
     return {
         repository,
-        commits: commits.data.length ?
-            commits.data.reduce((total, current) => total + current.total, 0) :
-            0,
+        commits: commits.data.length,
         issues: {
             open: issues.filter((issues) => issues.state === "open").length,
             closed: issues.filter((issues) => issues.state === "closed").length,
